@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="592.0" prefWidth="517.0" stylesheets="@Style/Server.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cuicy.ClientController">
+   <children>
+      <Label layoutX="23.0" layoutY="519.0" prefHeight="50.0" prefWidth="352.0">
+         <graphic>
+            <TextField fx:id="inputField" prefHeight="42.0" prefWidth="352.0" />
+         </graphic>
+      </Label>
+      <Button fx:id="sendButton" layoutX="384.0" layoutY="524.0" mnemonicParsing="false" onAction="#sendButtonOnAction" prefHeight="42.0" prefWidth="119.0" text="Send" />
+      <ImageView fitHeight="107.0" fitWidth="109.0" layoutX="-19.0" layoutY="-21.0">
+         <image>
+            <Image url="@Logo/EChat-logo-img.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="67.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Nhom chat da chet" />
+      <Label fx:id="lbname" layoutX="315.0" layoutY="16.0" prefHeight="28.0" prefWidth="90.0" text="Welcome" />
+      <ScrollPane layoutX="23.0" layoutY="74.0" prefHeight="414.0" prefWidth="476.0">
+         <content>
+            <VBox fx:id="vbox" prefHeight="639.0" prefWidth="474.0" />
+         </content>
+      </ScrollPane>
+   </children>
+   <styleClass>
+      <String fx:value="title_container" />
+      <String fx:value="menu_container" />
+      <String fx:value="server_container" />
+   </styleClass>
+</AnchorPane>

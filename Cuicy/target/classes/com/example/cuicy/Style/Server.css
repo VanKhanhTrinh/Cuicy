@@ -1,0 +1,53 @@
+.server_container {
+    -fx-background-color: #EEEEEE;
+    -fx-alignment: center;
+}
+
+.left_container {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(two-pass-box, #AAAAAA, 5, 0, 0, 4);
+}
+
+
+.title_container {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20 20 0 0;
+    -fx-alignment: top_center;
+    -fx-padding: 10;
+}
+.text {
+    -fx-color: #0084C6;
+    }
+
+.title_container Text {
+    -fx-font-size: 2em;
+}
+.menu_container {
+    -fx-padding: 10 10 20 20;
+    -fx-spacing: 20;
+}
+.menu_container Button {
+  -fx-pref-height: 40;
+      -fx-pref-width: 115;
+      -fx-background-color:  #EA427A;
+      -fx-text-fill: #FFFFFF;
+      -fx-font-size: 1.1em;
+      -fx-alignment: center;
+       -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 6);
+}
+.menu_container Button:hover{
+    -fx-background: #760834;
+}
+.text {
+    -fx-font-size: 19px;
+}
+
+.VBox{
+     -fx-background-color: linear-gradient( #fff, #88D7FF);
+         -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 6);
+
+}
+
+
+
