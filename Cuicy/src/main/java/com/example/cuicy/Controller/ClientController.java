@@ -27,12 +27,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.net.Socket;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
-import static com.example.cuicy.ServerController.receiveMessage;
-
 public class ClientController {
     public Label lbname;
     public VBox vbox;
@@ -50,12 +46,9 @@ public class ClientController {
                     socket = new Socket("localhost", 3001);
                     dataInputStream = new DataInputStream(socket.getInputStream());
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                    System.out.println("Client connected");
                     Platform.runLater(() -> {
                         readXML();
                     });
-                    com.example.cuicy.ServerController.receiveMessage(clientName+" joined.");
-
                     while (socket.isConnected()){
                         String receivingMsg = dataInputStream.readUTF();
                         receiveMessage(receivingMsg, ClientController.this.vbox);
@@ -65,7 +58,6 @@ public class ClientController {
                 }
             }
         }).start();
-
     }
     public void shutdown() {
         com.example.cuicy.ServerController.receiveMessage(clientName+" left.");
@@ -92,7 +84,6 @@ public class ClientController {
                 HBox hBoxTime = new HBox();
                 hBoxTime.setAlignment(Pos.CENTER_LEFT);
                 hBoxTime.setPadding(new Insets(0, 5, 5, 10));
-
                 Text time = new Text(stringTime);
                 time.setStyle("-fx-font-size: 8");
                 hBoxTime.getChildren().add(time);
@@ -129,7 +120,7 @@ public class ClientController {
         vbox.getChildren().add(hBox);
         vbox.getChildren().add(hBoxTime);
     }
-    private void writeXML(String clientName, String msgToSend, String stringTime){
+    private static void writeXML(String clientName, String msgToSend, String stringTime){
         getElement("name", clientName);
         getElement("content", msgToSend);
         getElement("time", stringTime);
@@ -162,8 +153,6 @@ public class ClientController {
             e.printStackTrace();
         }
     }
-
-
     private static void receiveMessage(String msg, VBox vbox) throws IOException {
             String name = msg.split("-")[0];
             String msgFromServer = msg.split("-")[1];
@@ -184,6 +173,7 @@ public class ClientController {
             time.setStyle("-fx-font-size: 8");
             hBoxTime.getChildren().add(time);
             hBox.getChildren().add(textFlow);
+             writeXML(name,msgFromServer,stringTime);
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
@@ -192,8 +182,7 @@ public class ClientController {
                 }
             });
         }
-
-        public void getElement(String name, String content){
+        public static void getElement(String name, String content){
             try {
                 File inputFile = new File("chat.xml");
                 DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();

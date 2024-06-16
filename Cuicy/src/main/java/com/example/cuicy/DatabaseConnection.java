@@ -2,8 +2,6 @@ package com.example.cuicy;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class DatabaseConnection {
     public Connection databaselink;
@@ -14,7 +12,6 @@ public class DatabaseConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             databaselink = DriverManager.getConnection(url, databaseUsername, databasePassword);
-
         } catch(Exception e){
             e.printStackTrace();
         }

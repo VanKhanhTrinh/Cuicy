@@ -10,7 +10,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -43,7 +42,9 @@ public class ServerController {
         new Thread(() -> {
             try {
                 server = Server.getInstance();
-                server.makeSocket();
+                server.makeSocket2();
+                server.makeSocket1();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -62,9 +63,7 @@ public class ServerController {
         textFlow.setStyle("-fx-background-color: #abb8c3; -fx-font-weight: bold; -fx-background-radius: 15px");
         textFlow.setPadding(new Insets(5,10,5,10));
         text.setFill(Color.color(0,0,0));
-
         hBox.getChildren().add(textFlow);
-
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
