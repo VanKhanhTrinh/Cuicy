@@ -27,18 +27,13 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
-import java.util.ResourceBundle;
-
 
 public class LoginController{
     public TextField address_field;
     public Text error_text;
     public PasswordField password_field;
-    private DataInputStream dataInputStream;
     private Socket socket;
-    private DataOutputStream dataOutputStream;
-    private BufferedReader reader;
+    private InputStreamReader  reader;
     private PrintWriter writer;
 
     public Button login_button;
@@ -51,39 +46,30 @@ public class LoginController{
             public void run() {
                 try{
                     socket = new Socket("localhost", 3002);
-                    reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
-
+                    writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
+                    reader = new InputStreamReader(socket.getInputStream());
                 }catch (IOException e){
                     e.printStackTrace();
                 }
             }
         }).start();
     }
-    boolean f = true;
-    Server server;
+
     @FXML
     public void onLogin(ActionEvent event) throws IOException {
-        if(f){
-            String a=reader.readLine();
-            while(!a.equals("Hi"))
-            {
-                heresy[i]=a;
-                i++;
-                a=reader.readLine();
-            }
-            f=false;
-        }
-        boolean q = true;
-        String b = getMd5(address_field.getText() + password_field.getText());
-        for(int j=0; j<i; j++){
-            if(b.equals(heresy[j])) {
+        String b = getMd5(address_field.getText()) + getMd5(password_field.getText());
+        writer.println(b);
+        char[] buffer = new char[1024];
+        int bytesRead = reader.read(buffer);
+        String receivedData = new String(buffer, 0, bytesRead);
+        String trimmedData = receivedData.trim();
+            if(trimmedData.equals("success")) {
+                error_text.setText("");
                 showClient();
-                q = false;
                 address_field.setText("");
                 password_field.setText("");
-            }
         }
-        if(q) error_text.setText("Wrong password"); else error_text.setText("");
+        else error_text.setText("Wrong password");
     }
     public static String getMd5(String input)
     {

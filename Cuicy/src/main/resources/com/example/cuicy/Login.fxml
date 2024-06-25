@@ -17,14 +17,13 @@
       </VBox>
       <VBox layoutX="228.0" layoutY="25.0" prefHeight="336.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.rightAnchor="21.600000000000023" AnchorPane.topAnchor="25.0">
          <children>
+            <Text fx:id="error_text" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Label fx:id="address" text="Address:" />
             <TextField fx:id="address_field" styleClass="input_field" />
             <Label text="Password:" />
             <PasswordField fx:id="password_field" styleClass="input_field" />
-            <Text fx:id="error_text" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Button fx:id="login_button" mnemonicParsing="false" onAction="#onLogin" text="Login" />
-            <Button fx:id="register_button" layoutX="10.0" layoutY="258.0" mnemonicParsing="false" text="Register" />
             <Label fx:id="error_label" styleClass="error_label" />
+            <Button fx:id="login_button" mnemonicParsing="false" onAction="#onLogin" text="Login" />
          </children>
       </VBox>
    </children>
