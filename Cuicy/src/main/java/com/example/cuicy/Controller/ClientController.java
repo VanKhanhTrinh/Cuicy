@@ -36,9 +36,11 @@ public class ClientController {
     public Button sendButton;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
-    private String clientName = "Client";
+    public  String clientName = "askhakg";
     public TextField inputField;
-    public void initialize() throws IOException {
+
+    public void initialize() {
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -46,6 +48,7 @@ public class ClientController {
                     socket = new Socket("localhost", 3001);
                     dataInputStream = new DataInputStream(socket.getInputStream());
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
                     Platform.runLater(() -> {
                         readXML();
                     });
@@ -203,5 +206,5 @@ public class ClientController {
                 e.printStackTrace();
             }
         }
-    }
+}
 

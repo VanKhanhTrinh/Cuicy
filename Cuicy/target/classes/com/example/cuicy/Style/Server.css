@@ -37,7 +37,9 @@
        -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 6);
 }
 .menu_container Button:hover{
-    -fx-background: #760834;
+        -fx-cursor: hand;
+
+    -fx-background-color:linear-gradient(to right, #641F3D, #835D6E);
 }
 .text {
     -fx-font-size: 19px;

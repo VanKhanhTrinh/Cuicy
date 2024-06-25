@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
@@ -12,17 +14,22 @@
    <children>
       <VBox prefHeight="400.0" prefWidth="200.0" styleClass="login_logo_container" stylesheets="Style/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Daylamot nhomchat" textAlignment="CENTER" wrappingWidth="141.33677369356155" />
+            <ImageView fitHeight="124.0" fitWidth="120.0">
+               <image>
+                  <Image url="@Logo/EChat-logo-img.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FCHAT" textAlignment="CENTER" wrappingWidth="141.33677369356155" />
          </children>
       </VBox>
       <VBox layoutX="228.0" layoutY="25.0" prefHeight="336.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.rightAnchor="21.600000000000023" AnchorPane.topAnchor="25.0">
          <children>
-            <Text fx:id="error_text" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Label fx:id="error_label" prefHeight="19.0" prefWidth="192.0" styleClass="error_label" />
             <Label fx:id="address" text="Address:" />
             <TextField fx:id="address_field" styleClass="input_field" />
             <Label text="Password:" />
             <PasswordField fx:id="password_field" styleClass="input_field" />
-            <Label fx:id="error_label" styleClass="error_label" />
+            <Text fx:id="error_text" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="288.20001220703125" />
             <Button fx:id="login_button" mnemonicParsing="false" onAction="#onLogin" text="Login" />
          </children>
       </VBox>

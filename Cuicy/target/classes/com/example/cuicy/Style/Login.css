@@ -3,7 +3,7 @@
 }
 
 .login_logo_container{
-    -fx-background-color: #EA427A;
+    -fx-background-color:linear-gradient(#EA427A, #F7C3DA);
     -fx-alignment: center;
 }
 
@@ -59,15 +59,18 @@
 }
 
 .login_form_container Button {
-    -fx-background-color: #EA427A;
+    -fx-background-color:linear-gradient(to right, #EA427A, #F7C3DA);
+    -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 4);
     -fx-text-fill: #FFFFFF;
     -fx-pref-width: 350;
     -fx-pref-height: 30;
     -fx-font-size: 1.2em;
+    -fx-transition: background-color 0.3s, color 0.3s;
 }
 
 .login_form_container Button:hover {
     -fx-cursor: hand;
+    -fx-background-color:linear-gradient(to right, #641F3D, #835D6E);
 }
 
 .error_label {

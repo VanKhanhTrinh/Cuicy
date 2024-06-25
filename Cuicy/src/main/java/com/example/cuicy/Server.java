@@ -93,7 +93,7 @@ public class Server {
         int bytesRead = inputStreamReader.read(buffer);
         String receivedData = new String(buffer, 0, bytesRead);
         String trimmedData = receivedData.trim();
-             for(int j=0; j<2; j++) {
+             for(int j=0; j<=i; j++) {
                  if (trimmedData.equals(messages[j])) {
                      writer.println("success");
                      p = false;
